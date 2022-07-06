@@ -1,0 +1,173 @@
+<ion-content>
+  <div class="top" id="haut">
+    <ion-icon class="home" name="home" routerLink="/home"></ion-icon>
+    <h1 class="title">Vos dépenses!</h1>
+    <ion-icon  style="cursor: pointer; display: flex;" id="filters" class="filter" name="filter" (click)="openFilter()"></ion-icon>
+    <ion-icon style="cursor: pointer; display: none;" class="filterclose" id="filtercloses" name="close" (click)="closefilter()" ></ion-icon>
+  </div>
+
+  <div>
+    <div id="depenses" class="liste">
+      <ion-button class="adddepense" color="success" expand="block" style="text-align: center;" routerLink="/add-depense">Ajouter une dépense</ion-button>
+      <ion-card id="cart" color="light" class="liste-depenses" >
+     
+        <div *ngFor="let item of items; "  >
+          <div *ngIf="item.userId  == this.tokenStorage.getUser().id " >
+            <div *ngIf="item.id % 2 == 0">
+              <ion-item-sliding >
+                <ion-item>
+                <ion-card id="ionCard" style="display: flex; flex-direction: column;">
+                  <ion-card-header class="header" >
+                    <img src='../../../assets/Objet_en_studio.jpg'/>
+                    <div  id="NomType" class="nomType" style="display: flex ; justify-content: space-between;color: #000; bottom: 40px;">
+                      <ion-card-title>{{item.nom}} </ion-card-title>
+                      
+                      <ion-card-subtitle>{{item.categorie}}</ion-card-subtitle>
+                    </div>
+                    
+      
+                  </ion-card-header>
+  
+                  <ion-card-content id="details" >
+                    <ion-grid fixed>
+                      <ion-row>
+                        <ion-col size="6" >
+                          <div class="flex_div">
+      
+                            <div class="details">
+                              <ion-label class="bold_lbl"><strong>Prix:</strong></ion-label>
+                              <ion-label class="small_lbl">&nbsp;{{item.valeur}} €</ion-label>
+                            </div>
+                          </div>
+                        </ion-col>
+            
+            
+                        <ion-col size="6" >
+                          <div class="flex_div">
+      
+                            <div class="details">
+                              <ion-label class="bold_lbl"><strong>Type:</strong></ion-label>
+                              <ion-label class="small_lbl">&nbsp;{{item.type}}</ion-label>
+                            </div>
+                          </div>
+                        </ion-col>
+      
+                        <ion-col size="6" >
+                          <div class="flex_div">
+                            
+                            <div class="details" style="display: flex;">
+                              <ion-label class="bold_lbl"><strong>Date:</strong>  </ion-label>
+                              <ion-label class="small_lbl">&nbsp; {{item.date}}</ion-label>
+                            </div>
+                          </div>
+                        </ion-col>
+            
+                        <ion-col size="6" >
+                          <div class="flex_div">
+                            
+                            <div class="details" style="display: flex;">
+                              <ion-label class="bold_lbl"><strong>Description:</strong>  </ion-label>
+                              <ion-label class="small_lbl">&nbsp; {{item.description}}</ion-label>
+                            </div>
+                          </div>
+                        </ion-col>
+      
+      
+            
+                       
+            
+                      </ion-row>
+                    </ion-grid>
+                  
+                </ion-card-content> 
+                </ion-card> 
+              </ion-item>
+                <ion-item-options side="start">
+                  <ion-item-option color="warning" style="height: 100%;">
+                    <ion-button color="warning" style="height: 97%; width: 100%;" ><ion-icon color="light" name="create"></ion-icon> </ion-button>
+
+                  </ion-item-option>
+
+                </ion-item-options>
+
+                <ion-item-options side="end" color="danger" style="height: 100%;">
+                  <ion-item-option color="danger" style="height: 100%;">
+                    <ion-button color="danger" style="height: 100%;" (click)="removeItem(item)"><ion-icon name="trash"></ion-icon>
+                    </ion-button>
+                  </ion-item-option>
+                  
+                </ion-item-options>
+                
+              </ion-item-sliding>
+
+            </div>
+
+           
+           
+             
+        
+          </div>
+
+          </div>
+
+
+
+      </ion-card>
+        <a href="historique"  style="position: fixed;color: #000 ;bottom: 50px; width: 100%;"><ion-icon name="arrow-up"></ion-icon></a>
+    </div>
+    <div id="filter">
+      <ion-card class="card">
+        <ion-item>
+          <ion-checkbox ></ion-checkbox>
+          <ion-label> Loisir</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-checkbox></ion-checkbox>
+          <ion-label> Facture</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-checkbox></ion-checkbox>
+          <ion-label> Nourriture</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-checkbox></ion-checkbox>
+          <ion-label> Domicialiation</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-checkbox></ion-checkbox>
+          <ion-label> Abonnement</ion-label>
+        </ion-item>
+
+
+        <ion-item>
+          <ion-checkbox></ion-checkbox>
+          <ion-label> Economie</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Durée</ion-label>
+          <ion-select placeholder="---">
+            <ion-select-option>24 heures</ion-select-option>
+            <ion-select-option>1 semaine</ion-select-option>
+            <ion-select-option>1 mois</ion-select-option>
+            <ion-select-option>1 année</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-button expand="block" fill="clear" color="dark" (click)="closefilter()">Valider</ion-button>
+
+      </ion-card>
+      <!-- <ion-card [value]="dep.nom" *ngFor="let dep of depense">
+        <ion-card-header>{{dep.nom}}</ion-card-header>
+      </ion-card> -->
+    </div>
+
+
+
+  </div>
+
+
+
+</ion-content>

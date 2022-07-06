@@ -1,0 +1,125 @@
+<ion-content>
+  <div class="main_content_div">
+    <ion-buttons slot="start" class="menu_btn">
+      <ion-icon style="font-size: 20px; margin-top:15px;margin-left: 15px;" icon="home" color="light" routerLink="/home"></ion-icon> 
+    </ion-buttons>
+
+    <div class="user_div">
+      <div class="first_div">
+
+        
+        <span>
+          <strong style="margin: 7px;">{{ currentUser.nom }}</strong>
+          <strong>{{currentUser.prenom}}</strong>
+        </span>
+
+
+        <ion-label class="username"></ion-label>
+
+      </div>
+      <div class="user_back">
+
+      </div>
+    </div>
+
+    <div class="content_div">
+      <div class="test_details">
+        <ion-grid fixed>
+          <ion-row>
+            <ion-col size="6" >
+              <div class="flex_div">
+                <div class="round_div">
+                  <img src="../../../assets/icons8-euro-50.png">
+                </div>
+                <div class="details">
+                  <ion-label class="bold_lbl">Solde</ion-label>
+                  <ion-label class="small_lbl">{{solde}}</ion-label>
+                </div>
+              </div>
+            </ion-col>
+
+
+            <ion-col size="6" >
+              <div class="flex_div">
+                <div class="round_div">
+                  <img src="../../../assets/icons8-tirelire-64.png">
+                </div>
+                <div class="details">
+                  <ion-label class="bold_lbl">Epargne</ion-label>
+                  <ion-label class="small_lbl">{{infos.epargne}}</ion-label>
+                </div>
+              </div>
+            </ion-col>
+
+            <ion-col size="6" >
+              <div class="flex_div">
+                <div class="round_div">
+                  <img src="../../../assets/icons8-initier-le-transfert-d’argent-50.png">
+                </div>
+                <div class="details">
+                  <ion-label class="bold_lbl">Revenu</ion-label>
+                  <ion-label class="small_lbl">{{infos.salaire}}</ion-label>
+                </div>
+              </div>
+            </ion-col>
+
+            <ion-col size="6" >
+              <div class="flex_div">
+                <div class="round_div">
+                  <img src="../../../assets/images/logo-banque.png">
+                </div>
+                <div class="details">
+                  <ion-label class="bold_lbl">Compte</ion-label>
+                  <ion-label class="small_lbl">{{currentUser.compte}}</ion-label>
+                </div>
+              </div>
+            </ion-col>
+
+          </ion-row>
+        </ion-grid>
+
+      </div>
+      <ion-button shape="round" color="primary" expand="block" (click)="payer()" > J'ai été payer!</ion-button>
+      <ion-button shape="round" color="secondary"expand="block" (click)="epargnes()" > Modifier l'épargne!</ion-button>
+
+
+      <div id="modalEpargne" style="display: none;">
+        <span>
+          <h3>Votre épargne</h3>
+          <div class="compteur">
+            <label for="épargne">Entrer le montant</label>
+            <input type="number" placeholder="epargne"  />
+          </div>
+          <ion-button color="success" shape="round" expand="block" >Ajouter</ion-button>
+          <ion-button color="danger" shape="round" expand="block" >Retirer</ion-button>
+        </span>
+      </div>
+
+        <div class="list_div" routerLink="/edit-profil">
+          <ion-label>Modifier le profile</ion-label>
+          <ion-icon name="chevron-forward-outline"></ion-icon>
+        </div>
+
+        <div class="list_div" routerLink="/account">
+          <ion-label>Changer de compte</ion-label>
+          <ion-icon name="chevron-forward-outline"></ion-icon>
+        </div>
+
+        <div class="list_div" routerLink="/account"> 
+          <ion-label>Modifier les information du compte</ion-label>
+          <ion-icon name="chevron-forward-outline"></ion-icon>
+        </div>
+
+        <div class="list_div" routerLink="/historique" >
+          <ion-label>Historique</ion-label>
+          <ion-icon name="chevron-forward-outline"></ion-icon>
+        </div>
+        <div style="margin-top: 20px;">
+          <ion-button id="connect" routerLink="/login"  color="primary" shape="round" expand="block" >Se connecter</ion-button>
+          <br>
+          <ion-button id="logout"  color="danger" shape="round" expand="block" (click)="logout()" >Se déconnecter</ion-button>
+        </div>
+
+        </div>
+    </div>
+
